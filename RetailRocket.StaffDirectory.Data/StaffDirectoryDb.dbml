@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RRStaffDirectory" Class="StaffDirectoryDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=RETINA;Initial Catalog=RRStaffDirectory;Integrated Security=True" SettingsObjectName="RetailRocket.StaffDirectory.Data.Properties.Settings" SettingsPropertyName="RRStaffDirectoryConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Department" Member="Departments">
+    <Type Name="Department">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="Department_DepartmentMember" Member="DepartmentMembers" ThisKey="ID" OtherKey="DepartmentID" Type="DepartmentMember" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DepartmentMember" Member="DepartmentMembers">
+    <Type Name="DepartmentMember">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StaffID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Department_DepartmentMember" Member="Department" ThisKey="DepartmentID" OtherKey="ID" Type="Department" IsForeignKey="true" />
+      <Association Name="Staff_DepartmentMember" Member="Staff" ThisKey="StaffID" OtherKey="ID" Type="Staff" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Staff" Member="Staffs">
+    <Type Name="Staff">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Birthday" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MiddleName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FirstNameBin" Type="System.String" DbType="NVarChar(100)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LastNameBin" Type="System.String" DbType="NVarChar(100)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MiddleNameBin" Type="System.String" DbType="NVarChar(100)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Staff_DepartmentMember" Member="DepartmentMembers" ThisKey="ID" OtherKey="StaffID" Type="DepartmentMember" />
+    </Type>
+  </Table>
+</Database>

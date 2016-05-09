@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="StaffDirectoryDb">
+  <DataContextMoniker Name="/StaffDirectoryDbDataContext" />
+  <nestedChildShapes>
+    <classShape Id="ac267a5e-4b9f-4765-88c9-86279257275c" absoluteBounds="0.5, 0.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/StaffDirectoryDbDataContext/Department" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ded78b36-97a8-4c53-84e1-dfbc9a8f8d59" absoluteBounds="0.51500000000000057, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="73da9163-3310-4fc2-92ee-40749a3fa97d" absoluteBounds="0.5, 2.75, 2, 1.3862939453125">
+      <DataClassMoniker Name="/StaffDirectoryDbDataContext/DepartmentMember" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cff1667-3ad2-4a8d-a47a-f594139f343f" absoluteBounds="0.51500000000000012, 3.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.5 : 1.69399251302083); (1.5 : 2.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/StaffDirectoryDbDataContext/Department/Department_DepartmentMember" />
+      <nodes>
+        <classShapeMoniker Id="ac267a5e-4b9f-4765-88c9-86279257275c" />
+        <classShapeMoniker Id="73da9163-3310-4fc2-92ee-40749a3fa97d" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="1c413c9d-506b-40bf-91f7-cfcd24943ea6" absoluteBounds="3.375, 0.5, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/StaffDirectoryDbDataContext/Staff" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66100597-39ed-46d0-b4ce-7e7f785bd793" absoluteBounds="3.3899999999999997, 0.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.375 : 2.84780110677083); (4.375 : 3.49204802604167); (2.5 : 3.49204802604167)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/StaffDirectoryDbDataContext/Staff/Staff_DepartmentMember" />
+      <nodes>
+        <classShapeMoniker Id="1c413c9d-506b-40bf-91f7-cfcd24943ea6" />
+        <classShapeMoniker Id="73da9163-3310-4fc2-92ee-40749a3fa97d" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
