@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http.Dependencies;
 using Ninject;
 using Ninject.Syntax;
@@ -14,36 +11,36 @@ namespace RetailRocket.StaffDirectory.App_Start
     // which resolves services using the Ninject container.
     public class NinjectDependencyScope : IDependencyScope
     {
-        IResolutionRoot resolver;
+        IResolutionRoot _resolver;
 
         public NinjectDependencyScope(IResolutionRoot resolver)
         {
-            this.resolver = resolver;
+            this._resolver = resolver;
         }
 
         public object GetService(Type serviceType)
         {
-            if (resolver == null)
+            if (_resolver == null)
                 throw new ObjectDisposedException("this", "This scope has been disposed");
 
-            return resolver.TryGet(serviceType);
+            return _resolver.TryGet(serviceType);
         }
 
         public System.Collections.Generic.IEnumerable<object> GetServices(Type serviceType)
         {
-            if (resolver == null)
+            if (_resolver == null)
                 throw new ObjectDisposedException("this", "This scope has been disposed");
 
-            return resolver.GetAll(serviceType);
+            return _resolver.GetAll(serviceType);
         }
 
         public void Dispose()
         {
-            IDisposable disposable = resolver as IDisposable;
+            IDisposable disposable = _resolver as IDisposable;
             if (disposable != null)
                 disposable.Dispose();
 
-            resolver = null;
+            _resolver = null;
         }
     }
 

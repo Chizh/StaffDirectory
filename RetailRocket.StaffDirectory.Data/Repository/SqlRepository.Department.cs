@@ -2,7 +2,7 @@
 
 namespace RetailRocket.StaffDirectory.Data.Repository
 {
-    public partial class SqlRepository : IRepository
+    public partial class SqlRepository : IRepository // members for Department
     {
         public IQueryable<Department> Departments
         {
