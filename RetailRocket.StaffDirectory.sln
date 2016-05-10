@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailRocket.StaffDirectory
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailRocket.StaffDirectory.Data", "RetailRocket.StaffDirectory.Data\RetailRocket.StaffDirectory.Data.csproj", "{939D0E65-6093-4CE0-BF79-8BACE72FE453}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{ABB95AD8-9E3E-4B3D-B32B-14DAD07A0729}"
+	ProjectSection(SolutionItems) = preProject
+		DB\01_CreateDB.sql = DB\01_CreateDB.sql
+		DB\02_CreateStructure.sql = DB\02_CreateStructure.sql
+		DB\03_StoredProcedures.sql = DB\03_StoredProcedures.sql
+		DB\04_SampleData.sql = DB\04_SampleData.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
