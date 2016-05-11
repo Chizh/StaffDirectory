@@ -144,6 +144,8 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\API\ApiDataControllerBase.cs" />
+    <Compile Include="Controllers\API\DepartmentDataController.cs" />
     <Compile Include="Controllers\API\StaffDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

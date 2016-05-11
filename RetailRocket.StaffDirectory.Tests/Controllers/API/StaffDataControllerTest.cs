@@ -17,8 +17,11 @@ namespace RetailRocket.StaffDirectory.Tests.Controllers.API
         public override void TestSetup()
         {
             base.TestSetup();
-             _staffDataController = new StaffDataController();
-            _staffDataController.Repository = Utils.AppKernel.Get<IRepository>();
+
+            _staffDataController = new StaffDataController
+            {
+                Repository = Utils.AppKernel.Get<IRepository>()
+            };
         }
 
         [Test]

@@ -1,13 +1,10 @@
 ﻿using System.Configuration;
-using Ninject;
 using NUnit.Framework;
 
 namespace RetailRocket.StaffDirectory.Tests.Controllers.API
 {
     public  abstract class ApiControllerTestBase
     {
-        public static IKernel AppKernel;
-
         /// <summary>
         /// Setups for the all of the tests.
         /// Recreate test data base.

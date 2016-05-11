@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using Ninject;
 using RetailRocket.StaffDirectory.Data;
 
 namespace RetailRocket.StaffDirectory.Controllers.API
 {
-    public class StaffDataController : ApiController
+    /// <summary>
+    /// Api data controller for Staff entity.
+    /// </summary>
+    public class StaffDataController : ApiDataControllerBase<Staff>
     {
-        [Inject]
-        public IRepository Repository { get; set; }
-
-        public ICollection<Staff> Get()
+        public override ICollection<Staff> Get()
         {
             return Repository.Staffs.ToList();
         }
