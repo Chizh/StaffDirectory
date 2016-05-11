@@ -1,41 +1,32 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SqlServer.Management.Smo;
-using Microsoft.SqlServer.Management.Common;
-using System.IO;
-using System.Data.SqlClient;
-using System.Reflection;
-using System.Configuration;
+using Ninject;
+using RetailRocket.StaffDirectory.Controllers.API;
+using RetailRocket.StaffDirectory.Data;
 
 namespace RetailRocket.StaffDirectory.Tests.Controllers.API
 {
+    /// <summary>
+    /// Tests StaffDataController.
+    /// </summary>
     [TestFixture]
-    public class StaffDataControllerTest
+    public class StaffDataControllerTest : ApiControllerTestBase
     {
+        private StaffDataController _staffDataController;
+
         [TestFixtureSetUp]
-        public void TestSetup()
+        public override void TestSetup()
         {
-            string connectionString =
-                ConfigurationManager.ConnectionStrings["SQLServer_TEST"].ConnectionString;
-            string createDbScriptPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\..\DB\01_CreateDB.sql");
-            string createDbScript = File.ReadAllText(createDbScriptPath)
-                .Replace("RRStaffDirectory", "RRStaffDirectory_TEST");
-
-            SqlConnection conn = new SqlConnection(connectionString);
-
-            Server server = new Server(new ServerConnection(conn));
-
-            server.ConnectionContext.ExecuteNonQuery(createDbScript);
+            base.TestSetup();
+             _staffDataController = new StaffDataController();
+            _staffDataController.Repository = Utils.AppKernel.Get<IRepository>();
         }
 
         [Test]
-        public void ShouldAddTwoNumbers()
+        public void ShouldSuccessExecuteGet()
         {
-            Assert.That(1, Is.EqualTo(1));
+            var result = _staffDataController.Get();
+            Assert.IsNotNull(result);
+            Assert.AreNotEqual(0, result.Count);
         }
     }
 }

@@ -47,6 +47,10 @@
       <HintPath>..\packages\Microsoft.SqlServer.Scripting.11.0.2100.61\lib\Microsoft.SqlServer.Smo.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.core">
       <HintPath>..\packages\NUnitTestAdapter.WithFramework.2.0.0\lib\nunit.core.dll</HintPath>
       <Private>False</Private>
@@ -132,16 +136,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\API\ApiControllerTestBase.cs" />
     <Compile Include="Controllers\API\StaffDataControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="..\DB\01_CreateDB.sql">
+      <Link>Data\01_CreateDB.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\DB\02_CreateStructure.sql">
+      <Link>Data\02_CreateStructure.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\DB\03_StoredProcedures.sql">
+      <Link>Data\03_StoredProcedures.sql</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\DB\04_SampleData.sql">
+      <Link>Data\04_SampleData.sql</Link>
+    </EmbeddedResource>
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RetailRocket.StaffDirectory.Data\RetailRocket.StaffDirectory.Data.csproj">
+      <Project>{939d0e65-6093-4ce0-bf79-8bace72fe453}</Project>
+      <Name>RetailRocket.StaffDirectory.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RetailRocket.StaffDirectory\RetailRocket.StaffDirectory.csproj">
       <Project>{38EEF139-DAC8-42ED-AA08-A8B39618FF27}</Project>
       <Name>RetailRocket.StaffDirectory</Name>

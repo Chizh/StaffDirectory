@@ -2,13 +2,19 @@
 
 namespace RetailRocket.StaffDirectory.Data
 {
-    // Data repository interface which declares properties and operations with data.
+    /// <summary>
+    /// Data repository interface which declares properties and operations with data.
+    /// </summary>
     public interface IRepository
     {
         #region Properties
-        // Gets list of Staffs
+        /// <summary>
+        /// Gets list of Staffs.
+        /// </summary>
         IQueryable<Staff> Staffs { get; }
-        // Gets list of Departments
+        /// <summary>
+        /// Gets list of Departments.
+        /// </summary>
         IQueryable<Department> Departments { get; }
         #endregion
 

@@ -7,8 +7,10 @@ namespace RetailRocket.StaffDirectory.App_Start
 {
     // It has taken from http://www.peterprovost.org/blog/2012/06/19/adding-ninject-to-web-api
 
-    // Provides a Ninject implementation of IDependencyScope
-    // which resolves services using the Ninject container.
+    /// <summary>
+    /// Provides a Ninject implementation of IDependencyScope
+    /// which resolves services using the Ninject container.
+    /// </summary>
     public class NinjectDependencyScope : IDependencyScope
     {
         IResolutionRoot _resolver;

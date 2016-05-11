@@ -65,17 +65,27 @@ namespace RetailRocket.StaffDirectory.App_Start
         }
 
         /// <summary>
-        /// Load your modules or register your services here!
+        /// Load modules and register services.
         /// </summary>
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
+        {
+            RegisterService(kernel, ConfigurationManager.ConnectionStrings["StaffDirectoryConnectionString"].ConnectionString);
+        }
+
+        /// <summary>
+        /// Load modules and register services.
+        /// </summary>
+        /// <param name="kernel">The kernel.</param>
+        /// <param name="connectionString">The connection string to database.</param>
+        public static void RegisterService(IKernel kernel, string connectionString)
         {
             kernel.Bind<StaffDirectoryDbDataContext>()
                 .ToMethod(
                     c =>
                         new StaffDirectoryDbDataContext(
-                            ConfigurationManager.ConnectionStrings["StaffDirectoryConnectionString"].ConnectionString));
+                            connectionString));
             kernel.Bind<IRepository>().To<SqlRepository>().InRequestScope();
-        }        
+        }
     }
 }

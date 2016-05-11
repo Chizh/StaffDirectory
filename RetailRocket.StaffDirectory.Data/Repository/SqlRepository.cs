@@ -2,10 +2,14 @@
 
 namespace RetailRocket.StaffDirectory.Data.Repository
 {
-    // Sql ropository of data.
+    /// <summary>
+    /// Sql ropository of data.
+    /// </summary>
     public partial class SqlRepository : IRepository
     {
-        // Gets or sets DB context.
+        /// <summary>
+        /// Gets or sets DB context.
+        /// </summary>
         [Inject]
         public StaffDirectoryDbDataContext DbContext { get; set; }
     }
