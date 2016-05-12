@@ -1,10 +1,17 @@
 ﻿using System.Configuration;
+using Ninject;
 using NUnit.Framework;
+using RetailRocket.StaffDirectory.Controllers.API;
+using RetailRocket.StaffDirectory.Data;
 
 namespace RetailRocket.StaffDirectory.Tests.Controllers.API
 {
     public  abstract class ApiControllerTestBase
     {
+        protected StaffDataController StaffDataController;
+        protected DepartmentDataController DepartmentDataController;
+
+
         /// <summary>
         /// Setups for the all of the tests.
         /// Recreate test data base.
@@ -28,6 +35,16 @@ namespace RetailRocket.StaffDirectory.Tests.Controllers.API
 
             script = Utils.ReadResourceFile("RetailRocket.StaffDirectory.Tests.Data.04_SampleData.sql");
             Utils.RunSqlScript(script, connectionString);
+
+            StaffDataController = new StaffDataController
+            {
+                Repository = Utils.AppKernel.Get<IRepository>()
+            };
+
+            DepartmentDataController = new DepartmentDataController
+            {
+                Repository = Utils.AppKernel.Get<IRepository>()
+            };
         }
     }
 }

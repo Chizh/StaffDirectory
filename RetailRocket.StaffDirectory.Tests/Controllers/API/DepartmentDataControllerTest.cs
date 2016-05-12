@@ -9,12 +9,12 @@ namespace RetailRocket.StaffDirectory.Tests.Controllers.API
     /// Tests StaffDataController.
     /// </summary>
     [TestFixture]
-    public class StaffDataControllerTest : ApiControllerTestBase
+    public class DepartmentDataControllerTest : ApiControllerTestBase
     {
         [Test]
         public void ShouldSuccessExecuteGet()
         {
-            var result = StaffDataController.Get();
+            var result = DepartmentDataController.Get();
             Assert.IsNotNull(result);
             Assert.AreNotEqual(0, result.Count);
         }
