@@ -1,10 +1,10 @@
-INSERT [dbo].[Department] ([Name]) VALUES ('Департамент маркетинга')
-INSERT [dbo].[Department] ([Name]) VALUES ('Бухгалтерия')
-INSERT [dbo].[Department] ([Name]) VALUES ('Департамент информационных технологий')
+п»їINSERT [dbo].[Department] ([Name]) VALUES ('Р”РµРїР°СЂС‚Р°РјРµРЅС‚ РјР°СЂРєРµС‚РёРЅРіР°')
+INSERT [dbo].[Department] ([Name]) VALUES ('Р‘СѓС…РіР°Р»С‚РµСЂРёСЏ')
+INSERT [dbo].[Department] ([Name]) VALUES ('Р”РµРїР°СЂС‚Р°РјРµРЅС‚ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹С… С‚РµС…РЅРѕР»РѕРіРёР№')
 GO
 
-INSERT [dbo].[Staff] ([Birthday], [FirstName], [MiddleName], [LastName]) VALUES ('1985-05-11', 'Иван', 'Петрович', 'Иванов')
-INSERT [dbo].[Staff] ([Birthday], [FirstName], [MiddleName], [LastName]) VALUES ('1990-06-20', 'Сергей', 'Алексеевич', 'Суриков')
-INSERT [dbo].[Staff] ([Birthday], [FirstName], [MiddleName], [LastName]) VALUES ('1970-01-20', 'Дмитрий', NULL, 'Никифоров')
-INSERT [dbo].[Staff] ([Birthday], [FirstName], [MiddleName], [LastName]) VALUES ('1975-02-12', 'Петр', 'Петрович', 'Петров')
+INSERT [dbo].[Staff] ([Birthday], [FirstName], [MiddleName], [LastName]) VALUES ('1985-05-11', 'РРІР°РЅ', 'РџРµС‚СЂРѕРІРёС‡', 'РРІР°РЅРѕРІ')
+INSERT [dbo].[Staff] ([Birthday], [FirstName], [MiddleName], [LastName]) VALUES ('1990-06-20', 'РЎРµСЂРіРµР№', 'РђР»РµРєСЃРµРµРІРёС‡', 'РЎСѓСЂРёРєРѕРІ')
+INSERT [dbo].[Staff] ([Birthday], [FirstName], [MiddleName], [LastName]) VALUES ('1970-01-20', 'Р”РјРёС‚СЂРёР№', NULL, 'РќРёРєРёС„РѕСЂРѕРІ')
+INSERT [dbo].[Staff] ([Birthday], [FirstName], [MiddleName], [LastName]) VALUES ('1975-02-12', 'РџРµС‚СЂ', 'РџРµС‚СЂРѕРІРёС‡', 'РџРµС‚СЂРѕРІ')
 GO

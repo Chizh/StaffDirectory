@@ -13,6 +13,10 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         [Inject]
         public IRepository Repository { get; set; }
 
+        /// <summary>
+        /// Return collection of elements.
+        /// </summary>
+        /// <returns>Collection of elements.</returns>
         public abstract ICollection<T> Get();
     }
 }

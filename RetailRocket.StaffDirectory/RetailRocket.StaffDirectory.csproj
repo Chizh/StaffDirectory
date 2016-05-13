@@ -148,6 +148,8 @@
     <Compile Include="Controllers\API\DepartmentDataController.cs" />
     <Compile Include="Controllers\API\StaffDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Entity\ApiResponse.cs" />
+    <Compile Include="Entity\DepartmentResponse.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -19,13 +19,13 @@ namespace RetailRocket.StaffDirectory.Data
         #endregion
 
         #region Department members
-        bool CreateDepartment(Department instance);
+        int CreateDepartment(Department instance);
         bool UpdateDepartment(Department instance);
         bool RemoveDepartment(int departmentId);
         #endregion
 
         #region Staff members
-        bool CreateStaff(Staff instance);
+        int CreateStaff(Staff instance);
         bool UpdateStaff(Staff instance);
         bool RemoveStaff(int staffId);
         #endregion

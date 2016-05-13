@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using RetailRocket.StaffDirectory.Data.Exceptions;
 
 namespace RetailRocket.StaffDirectory.Data.Repository
 {
@@ -8,17 +10,37 @@ namespace RetailRocket.StaffDirectory.Data.Repository
         {
             get { return DbContext.Departments; }
         }
-        public bool CreateDepartment(Department instance)
+
+        /// <summary>
+        /// Creates a department.
+        /// </summary>
+        /// <param name="instance">The department which should be created.</param>
+        /// <returns>ID if the department created successfully, else -1 or throw EntityExistsException if such department already exists.</returns>
+        /// <exception cref="EntityExistsException">Throws EntityExistsException if suc departments already exists.</exception>
+        public int CreateDepartment(Department instance)
         {
+            var instanceExists =
+                DbContext.Departments.FirstOrDefault(d => String.Compare(d.Name, instance.Name, StringComparison.OrdinalIgnoreCase) == 0);
+            if (instanceExists != null)
+            {
+                // if department with such name exists - throw the special exception
+                throw new EntityExistsException(string.Format("Department with name '{0}' already exists", instance.Name));
+            }
+
             if (instance.ID == 0)
             {
                 DbContext.Departments.InsertOnSubmit(instance);
                 DbContext.Departments.Context.SubmitChanges();
-                return true;
+                return instance.ID;
             }
-            return false;
+            return -1;
         }
 
+        /// <summary>
+        /// Updates a department.
+        /// </summary>
+        /// <param name="instance">The instance of the department which should be updated.</param>
+        /// <returns>true if the department updeted successfully, else false.</returns>
         public bool UpdateDepartment(Department instance)
         {
             Department departmentStored = DbContext.Departments.FirstOrDefault(d => d.ID == instance.ID);
@@ -31,6 +53,11 @@ namespace RetailRocket.StaffDirectory.Data.Repository
             return false;
         }
 
+        /// <summary>
+        /// Removes a department with such departmentId.
+        /// </summary>
+        /// <param name="departmentId">Id of department which should be removed.</param>
+        /// <returns>true if department removed successfully, else false.</returns>
         public bool RemoveDepartment(int departmentId)
         {
             Department instance = DbContext.Departments.FirstOrDefault(d => d.ID == departmentId);

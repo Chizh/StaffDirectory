@@ -52,7 +52,7 @@ namespace RetailRocket.StaffDirectory.App_Start
 
                 RegisterServices(kernel);
 
-                // Install our Ninject-based IDependencyResolver into the Web API config
+                // Install the Ninject-based IDependencyResolver into the Web API config
                 GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
 
                 return kernel;

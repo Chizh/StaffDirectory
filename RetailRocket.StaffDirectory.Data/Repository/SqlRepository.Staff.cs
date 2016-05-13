@@ -9,15 +9,15 @@ namespace RetailRocket.StaffDirectory.Data.Repository
             get { return DbContext.Staffs; }
         }
 
-        public bool CreateStaff(Staff instance)
+        public int CreateStaff(Staff instance)
         {
             if (instance.ID == 0)
             {
                 DbContext.Staffs.InsertOnSubmit(instance);
                 DbContext.Staffs.Context.SubmitChanges();
-                return true;
+                return instance.ID;
             }
-            return false;
+            return -1;
         }
 
         public bool UpdateStaff(Staff instance)
