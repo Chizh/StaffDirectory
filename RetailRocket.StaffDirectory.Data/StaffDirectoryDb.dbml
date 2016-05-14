@@ -29,4 +29,20 @@
       <Association Name="Staff_DepartmentMember" Member="DepartmentMembers" ThisKey="ID" OtherKey="StaffID" Type="DepartmentMember" />
     </Type>
   </Table>
+  <Function Name="dbo.SearchStaff" Method="SearchStaff">
+    <Parameter Name="firstName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="lastName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="middleName" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="birthday" Type="System.DateTime" DbType="Date" />
+    <ElementType Name="SearchStaffResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Birthday" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MiddleName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="FirstNameBin" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="LastNameBin" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MiddleNameBin" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

@@ -11,6 +11,19 @@ namespace RetailRocket.StaffDirectory.Tests.Controllers.API
         protected StaffDataController StaffDataController;
         protected DepartmentDataController DepartmentDataController;
 
+        [SetUp]
+        public virtual void SetUp()
+        {
+            StaffDataController = new StaffDataController
+            {
+                Repository = Utils.AppKernel.Get<IRepository>()
+            };
+
+            DepartmentDataController = new DepartmentDataController
+            {
+                Repository = Utils.AppKernel.Get<IRepository>()
+            };
+        }
 
         /// <summary>
         /// Setups for the all of the tests.
@@ -35,16 +48,6 @@ namespace RetailRocket.StaffDirectory.Tests.Controllers.API
 
             script = Utils.ReadResourceFile("RetailRocket.StaffDirectory.Tests.Data.04_SampleData.sql");
             Utils.RunSqlScript(script, connectionString);
-
-            StaffDataController = new StaffDataController
-            {
-                Repository = Utils.AppKernel.Get<IRepository>()
-            };
-
-            DepartmentDataController = new DepartmentDataController
-            {
-                Repository = Utils.AppKernel.Get<IRepository>()
-            };
         }
     }
 }

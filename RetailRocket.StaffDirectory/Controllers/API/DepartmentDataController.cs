@@ -93,8 +93,8 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         /// <summary>
         /// Removes a department.
         /// </summary>
-        /// <param name="departmentId">The department id which should be removed.</param>
-        /// <returns>Response which contains status code, ID of department, and error message if removing failed.</returns>
+        /// <param name="departmentId">A department id which should be removed.</param>
+        /// <returns>Response which contains a status code, ID of department, and error message if removing failed.</returns>
         [HttpPost]
         public DepartmentResponse RemoveDepartment(int departmentId)
         {

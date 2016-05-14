@@ -149,6 +149,9 @@
     <Compile Include="Controllers\API\StaffDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Entity\ApiResponse.cs" />
+    <Compile Include="Entity\SearchStaffRequest.cs" />
+    <Compile Include="Entity\StaffLinkRequest.cs" />
+    <Compile Include="Entity\StaffResponse.cs" />
     <Compile Include="Entity\DepartmentResponse.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -94,6 +94,13 @@ namespace RetailRocket.StaffDirectory.Data
 				return this.GetTable<Staff>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SearchStaff")]
+		public ISingleResult<SearchStaffResult> SearchStaff([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string firstName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string lastName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string middleName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> birthday)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), firstName, lastName, middleName, birthday);
+			return ((ISingleResult<SearchStaffResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Department")]
@@ -657,6 +664,158 @@ namespace RetailRocket.StaffDirectory.Data
 		{
 			this.SendPropertyChanging();
 			entity.Staff = null;
+		}
+	}
+	
+	public partial class SearchStaffResult
+	{
+		
+		private int _ID;
+		
+		private System.Nullable<System.DateTime> _Birthday;
+		
+		private string _FirstName;
+		
+		private string _MiddleName;
+		
+		private string _LastName;
+		
+		private string _FirstNameBin;
+		
+		private string _LastNameBin;
+		
+		private string _MiddleNameBin;
+		
+		public SearchStaffResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL")]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Birthday", DbType="Date")]
+		public System.Nullable<System.DateTime> Birthday
+		{
+			get
+			{
+				return this._Birthday;
+			}
+			set
+			{
+				if ((this._Birthday != value))
+				{
+					this._Birthday = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this._FirstName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MiddleName", DbType="NVarChar(100)")]
+		public string MiddleName
+		{
+			get
+			{
+				return this._MiddleName;
+			}
+			set
+			{
+				if ((this._MiddleName != value))
+				{
+					this._MiddleName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(100)")]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this._LastName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstNameBin", DbType="NVarChar(100)")]
+		public string FirstNameBin
+		{
+			get
+			{
+				return this._FirstNameBin;
+			}
+			set
+			{
+				if ((this._FirstNameBin != value))
+				{
+					this._FirstNameBin = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastNameBin", DbType="NVarChar(100)")]
+		public string LastNameBin
+		{
+			get
+			{
+				return this._LastNameBin;
+			}
+			set
+			{
+				if ((this._LastNameBin != value))
+				{
+					this._LastNameBin = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MiddleNameBin", DbType="NVarChar(100)")]
+		public string MiddleNameBin
+		{
+			get
+			{
+				return this._MiddleNameBin;
+			}
+			set
+			{
+				if ((this._MiddleNameBin != value))
+				{
+					this._MiddleNameBin = value;
+				}
+			}
 		}
 	}
 }

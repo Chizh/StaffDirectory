@@ -1,6 +1,4 @@
 ﻿using NUnit.Framework;
-using Ninject;
-using RetailRocket.StaffDirectory.Controllers.API;
 using RetailRocket.StaffDirectory.Data;
 
 namespace RetailRocket.StaffDirectory.Tests.Controllers.API

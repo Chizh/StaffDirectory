@@ -1,4 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Linq;
+using System.Linq;
+using Ninject.Infrastructure.Language;
 
 namespace RetailRocket.StaffDirectory.Data.Repository
 {
@@ -46,6 +50,46 @@ namespace RetailRocket.StaffDirectory.Data.Repository
                 return true;
             }
 
+            return false;
+        }
+
+        public ICollection<Staff> SearchStaff(string firstName, string lastName, string middleName, DateTime? birthday)
+        {   
+            var searchResult = DbContext.SearchStaff(firstName, lastName, middleName, birthday);
+            List<Staff> result = new List<Staff>();
+            foreach (var sr in searchResult)
+            {
+                IQueryable<DepartmentMember> dms = DbContext.DepartmentMembers.Where(dm => dm.StaffID == sr.ID);
+                EntitySet<DepartmentMember> dmEs = new EntitySet<DepartmentMember>();
+                if (dms != null && dms.Any()) dmEs.AddRange(dms);
+                result.Add(new Staff
+                {
+                    ID = sr.ID,
+                    FirstName = sr.FirstName,
+                    LastName = sr.LastName,
+                    MiddleName = sr.MiddleName,
+                    Birthday = sr.Birthday,
+                    DepartmentMembers = dmEs
+                });
+            }
+            return result;
+        }
+
+        public bool LinkStaffToDepartments(int staffId, int[] departmentIds)
+        {
+            if (staffId > 0 && departmentIds.Length > 0)
+            {
+                foreach (var depId in departmentIds)
+                {
+                    DbContext.DepartmentMembers.InsertOnSubmit(new DepartmentMember
+                    {
+                        StaffID = staffId,
+                        DepartmentID = depId
+                    });
+                }
+                DbContext.DepartmentMembers.Context.SubmitChanges();
+                return true;
+            }
             return false;
         }
     }
