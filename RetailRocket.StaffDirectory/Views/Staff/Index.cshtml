@@ -1,0 +1,77 @@
+﻿@model ICollection<RetailRocket.StaffDirectory.Data.Staff>
+@{
+    ViewBag.Title = "Сотрудники";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header">
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="form-group col-md-8">
+        <div class="col-sm-2"><input type="text" id="firstNameInput" class="form-control" placeholder="Имя">
+        </div>
+        <div class="col-sm-2">
+            <input type="text" id="lastNameInput" class="form-control" placeholder="Фамилия">
+        </div>
+        <div class="col-sm-2">
+            <input type="text" id="middleNameInput" class="form-control" placeholder="Отчество">
+        </div>
+        <div class="col-sm-4">
+            <div class='input-group date' id='datetimepicker'>
+                <input type='text' class="form-control" id="birthdayInput" placeholder="Дата рождения" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-sm-2"><button type="button" id="searchButton" class="btn btn-default">Поиск</button>
+        </div>
+
+    </div>
+    <div class="col-md-2">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <p>
+            <button type="button" class="btn btn-primary">Добавить</button>
+            <button type="button" class="btn btn-default">Редактировать</button>
+            <button type="button" class="btn btn-default">Удалить</button>
+        </p>
+    </div>
+    <div class="col-md-8">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+        <table id="staffTable" class="table table-striped">
+            <thead>
+            <tr>
+                <th data-field="ID">ID</th>
+                <th data-field="FirstName">Имя</th>
+                <th data-field="LastName">Фамилия</th>
+                <th data-field="MiddleName">Отчество</th>
+                <th data-field="Birthday" >Дата рождения</th>
+                <th data-field="Department">Департамент</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/staffApp")
+

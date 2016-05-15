@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Отделы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ICollection<RetailRocket.StaffDirectory.Data.Department>
+<div class="page-header">
+</div>
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <p>
+            <button type="button" class="btn btn-primary">Создать</button>
+            <button type="button" class="btn btn-default">Редактировать</button>
+            <button type="button" class="btn btn-default">Удалить</button>
+        </p>
+    </div>
+    <div class="col-md-8">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Департамент</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var department in Model)
+                {
+                    <tr>
+                        <td>@department.ID</td>
+                        <td>@department.Name</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+</div>
