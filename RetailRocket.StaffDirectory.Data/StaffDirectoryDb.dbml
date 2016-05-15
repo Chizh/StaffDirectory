@@ -34,6 +34,7 @@
     <Parameter Name="lastName" Type="System.String" DbType="NVarChar(100)" />
     <Parameter Name="middleName" Type="System.String" DbType="NVarChar(100)" />
     <Parameter Name="birthday" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="departmentId" Type="System.Int32" DbType="Int" />
     <ElementType Name="SearchStaffResult">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Birthday" Type="System.DateTime" DbType="Date" CanBeNull="true" />
@@ -43,6 +44,8 @@
       <Column Name="FirstNameBin" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="LastNameBin" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="MiddleNameBin" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DepartmentName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

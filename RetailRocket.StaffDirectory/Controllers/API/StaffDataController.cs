@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
-using RetailRocket.StaffDirectory.Data;
 using RetailRocket.StaffDirectory.Data.Exceptions;
 using RetailRocket.StaffDirectory.Entity;
+using Staff = RetailRocket.StaffDirectory.Entity.Staff;
 
 namespace RetailRocket.StaffDirectory.Controllers.API
 {
@@ -38,9 +37,27 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         /// Gets collection of Staff without any conditions.
         /// </summary>
         /// <returns>List of Staff.</returns>
-        public override ICollection<Staff> Get()
+        public ICollection<Staff> Get()
         {
-            return Repository.Staffs.ToList();
+            var staffs = Repository.SearchStaff(null, null, null, null, null);
+
+            List<Staff> result = new List<Staff>();
+
+            foreach (var staff in staffs)
+            {
+                result.Add(new Staff
+                {
+                    ID = staff.ID,
+                    FirstName = staff.FirstName,
+                    LastName = staff.LastName,
+                    MiddleName = staff.MiddleName,
+                    Birthday = staff.Birthday,
+                    DepartmentID = staff.DepartmentID,
+                    DepartmentName = staff.DepartmentName
+                });
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -53,7 +70,14 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         {
             try
             {
-                int result = Repository.CreateStaff(instance);
+                int result = Repository.CreateStaff(new Data.Staff
+                {   
+                    ID = instance.ID,
+                    FirstName = instance.FirstName,
+                    LastName = instance.LastName,
+                    MiddleName = instance.MiddleName,
+                    Birthday = instance.Birthday,
+                });
 
                 return result > 0
                     ? GetGenericResponse(0, result, null) // Staff created successfully
@@ -79,7 +103,14 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         {
             try
             {
-                var result = Repository.UpdateStaff(staff);
+                var result = Repository.UpdateStaff(new Data.Staff
+                {
+                    ID = staff.ID,
+                    FirstName = staff.FirstName,
+                    LastName = staff.LastName,
+                    MiddleName = staff.MiddleName,
+                    Birthday = staff.Birthday
+                });
                 return result
                     ? GetGenericResponse(0, staff.ID, null) // the department updated successfully
                     : GetGenericResponse(-1, staff.ID, "Such staff doesn't exists");
@@ -133,17 +164,33 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         }
 
         /// <summary>
-        /// Searchs staffs by firstName, lastName, middleName and birthday.
+        /// Searchs staffs by firstName, lastName, middleName, birthday and department.
         /// </summary>
         /// <param name="request">Request which contains fields.</param>
         /// <returns>The result of search.</returns>
         [HttpPost]
-        public ICollection<Staff> SearchStaff(SearchStaffRequest request)
+        public ICollection<SearchStaff> SearchStaff(SearchStaffRequest request)
         {
-            return request != null
+            var data = request != null
                 ? Repository.SearchStaff(request.FirstName, request.LastName, request.MiddleName,
-                    request.Birthday)
-                : Repository.SearchStaff(null, null, null, null);
+                    request.Birthday, request.DepartmentID)
+                : Repository.SearchStaff(null, null, null, null, null);
+
+            List<SearchStaff> result = new List<SearchStaff>();
+            foreach (var searchStaffResult in data)
+            {
+                result.Add(new SearchStaff
+                {
+                    ID = searchStaffResult.ID,
+                    FirstName = searchStaffResult.FirstName,
+                    LastName = searchStaffResult.LastName,
+                    MiddleName = searchStaffResult.MiddleName,
+                    Birthday = searchStaffResult.Birthday,
+                    DepartmentID = searchStaffResult.DepartmentID,
+                    DepartmentName = searchStaffResult.DepartmentName
+                });
+            }
+            return result;
         } 
     }
 }

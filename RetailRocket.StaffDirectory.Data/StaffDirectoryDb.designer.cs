@@ -96,9 +96,9 @@ namespace RetailRocket.StaffDirectory.Data
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SearchStaff")]
-		public ISingleResult<SearchStaffResult> SearchStaff([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string firstName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string lastName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string middleName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> birthday)
+		public ISingleResult<SearchStaffResult> SearchStaff([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string firstName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string lastName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string middleName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> birthday, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> departmentId)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), firstName, lastName, middleName, birthday);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), firstName, lastName, middleName, birthday, departmentId);
 			return ((ISingleResult<SearchStaffResult>)(result.ReturnValue));
 		}
 	}
@@ -686,6 +686,10 @@ namespace RetailRocket.StaffDirectory.Data
 		
 		private string _MiddleNameBin;
 		
+		private System.Nullable<int> _DepartmentID;
+		
+		private string _DepartmentName;
+		
 		public SearchStaffResult()
 		{
 		}
@@ -814,6 +818,38 @@ namespace RetailRocket.StaffDirectory.Data
 				if ((this._MiddleNameBin != value))
 				{
 					this._MiddleNameBin = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentID", DbType="Int")]
+		public System.Nullable<int> DepartmentID
+		{
+			get
+			{
+				return this._DepartmentID;
+			}
+			set
+			{
+				if ((this._DepartmentID != value))
+				{
+					this._DepartmentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepartmentName", DbType="NVarChar(150)")]
+		public string DepartmentName
+		{
+			get
+			{
+				return this._DepartmentName;
+			}
+			set
+			{
+				if ((this._DepartmentName != value))
+				{
+					this._DepartmentName = value;
 				}
 			}
 		}

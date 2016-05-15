@@ -53,26 +53,26 @@ namespace RetailRocket.StaffDirectory.Data.Repository
             return false;
         }
 
-        public ICollection<Staff> SearchStaff(string firstName, string lastName, string middleName, DateTime? birthday)
+        public ISingleResult<SearchStaffResult> SearchStaff(string firstName, string lastName, string middleName, DateTime? birthday, int? departmentId)
         {   
-            var searchResult = DbContext.SearchStaff(firstName, lastName, middleName, birthday);
-            List<Staff> result = new List<Staff>();
-            foreach (var sr in searchResult)
-            {
-                IQueryable<DepartmentMember> dms = DbContext.DepartmentMembers.Where(dm => dm.StaffID == sr.ID);
-                EntitySet<DepartmentMember> dmEs = new EntitySet<DepartmentMember>();
-                if (dms != null && dms.Any()) dmEs.AddRange(dms);
-                result.Add(new Staff
-                {
-                    ID = sr.ID,
-                    FirstName = sr.FirstName,
-                    LastName = sr.LastName,
-                    MiddleName = sr.MiddleName,
-                    Birthday = sr.Birthday,
-                    DepartmentMembers = dmEs
-                });
-            }
-            return result;
+            return DbContext.SearchStaff(firstName, lastName, middleName, birthday, departmentId);
+            //List<Staff> result = new List<Staff>();
+            //foreach (var sr in searchResult)
+            //{
+            //    IQueryable<DepartmentMember> dms = DbContext.DepartmentMembers.Where(dm => dm.StaffID == sr.ID);
+            //    EntitySet<DepartmentMember> dmEs = new EntitySet<DepartmentMember>();
+            //    if (dms != null && dms.Any()) dmEs.AddRange(dms);
+            //    result.Add(new Staff
+            //    {
+            //        ID = sr.ID,
+            //        FirstName = sr.FirstName,
+            //        LastName = sr.LastName,
+            //        MiddleName = sr.MiddleName,
+            //        Birthday = sr.Birthday,
+            //        DepartmentMembers = dmEs
+            //    });
+            //}
+            //return result;
         }
 
         public bool LinkStaffToDepartments(int staffId, int[] departmentIds)

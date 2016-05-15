@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
+using RetailRocket.StaffDirectory.Entity;
 using RetailRocket.StaffDirectory.Data;
+using Department = RetailRocket.StaffDirectory.Entity.Department;
 
 namespace RetailRocket.StaffDirectory.Tests.Controllers.API
 {

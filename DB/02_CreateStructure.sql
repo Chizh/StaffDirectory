@@ -57,12 +57,12 @@ CREATE TABLE [dbo].[DepartmentMember](
 GO
 
 ALTER TABLE [dbo].[DepartmentMember]  WITH CHECK ADD  CONSTRAINT [FK_DepartmentMember_Department] FOREIGN KEY([DepartmentID])
-REFERENCES [dbo].[Department] ([ID])
+REFERENCES [dbo].[Department] ([ID]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[DepartmentMember] CHECK CONSTRAINT [FK_DepartmentMember_Department]
 GO
 ALTER TABLE [dbo].[DepartmentMember]  WITH CHECK ADD  CONSTRAINT [FK_DepartmentMember_Staff] FOREIGN KEY([StaffID])
-REFERENCES [dbo].[Staff] ([ID])
+REFERENCES [dbo].[Staff] ([ID]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[DepartmentMember] CHECK CONSTRAINT [FK_DepartmentMember_Staff]
 GO

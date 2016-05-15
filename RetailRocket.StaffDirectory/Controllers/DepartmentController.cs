@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using Ninject;
-using RetailRocket.StaffDirectory.Data;
+using Department = RetailRocket.StaffDirectory.Entity.Department;
 
 namespace RetailRocket.StaffDirectory.Controllers
 {
@@ -12,12 +8,17 @@ namespace RetailRocket.StaffDirectory.Controllers
     {
         public ActionResult Index()
         {
-            return View(new List<Department>(Repository.Departments));
-        }
-
-        public ActionResult DepartmentTable()
-        {
-            return PartialView(new List<Department>(Repository.Departments));
+            List<Department> result = new List<Department>();
+            var deps = Repository.Departments;
+            foreach (var department in deps)
+            {
+                result.Add(new Department
+                {
+                    ID = department.ID,
+                    Name = department.Name
+                });
+            }
+            return View(result);
         }
     }
 }

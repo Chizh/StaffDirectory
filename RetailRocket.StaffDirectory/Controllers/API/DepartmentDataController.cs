@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using RetailRocket.StaffDirectory.Data;
 using RetailRocket.StaffDirectory.Data.Exceptions;
 using RetailRocket.StaffDirectory.Entity;
+using Department = RetailRocket.StaffDirectory.Entity.Department;
 
 namespace RetailRocket.StaffDirectory.Controllers.API
 {
@@ -38,9 +38,22 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         /// Returns list of all of departments without any sorting, paging or conditions.
         /// </summary>
         /// <returns>List of departments.</returns>
-        public override ICollection<Department> Get()
+        public ICollection<Department> Get()
         {
-            return Repository.Departments.ToList();
+            var departments = Repository.Departments.ToList();
+
+            List<Department> result = new List<Department>();
+
+            foreach (var department in departments)
+            {
+                result.Add(new Department
+                {
+                    ID = department.ID,
+                    Name = department.Name
+                });
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -53,7 +66,7 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         {
             try
             {
-                int result = Repository.CreateDepartment(new Department { Name = departmentName });
+                int result = Repository.CreateDepartment(new Data.Department { Name = departmentName });
 
                 return result > 0
                     ? GetGenericResponse(0, result, null) // Department created successfully
@@ -79,7 +92,11 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         {
             try
             {
-                var result = Repository.UpdateDepartment(department);
+                var result = Repository.UpdateDepartment(new Data.Department
+                {
+                    ID = department.ID,
+                    Name = department.Name
+                });
                 return result
                     ? GetGenericResponse(0, department.ID, null) // the department updated successfully
                     : GetGenericResponse(-1, department.ID, "Such department doesn't exists");

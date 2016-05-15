@@ -8,3 +8,6 @@ INSERT [dbo].[Staff] ([Birthday], [FirstName], [MiddleName], [LastName]) VALUES 
 INSERT [dbo].[Staff] ([Birthday], [FirstName], [MiddleName], [LastName]) VALUES ('1970-01-20', 'Дмитрий', NULL, 'Никифоров')
 INSERT [dbo].[Staff] ([Birthday], [FirstName], [MiddleName], [LastName]) VALUES ('1975-02-12', 'Петр', 'Петрович', 'Петров')
 GO
+
+INSERT [dbo].[DepartmentMember] ([StaffID], [DepartmentID]) VALUES (4, 3)
+GO

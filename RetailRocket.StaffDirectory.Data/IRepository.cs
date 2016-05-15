@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 
 namespace RetailRocket.StaffDirectory.Data
@@ -30,7 +31,7 @@ namespace RetailRocket.StaffDirectory.Data
         int CreateStaff(Staff instance);
         bool UpdateStaff(Staff instance);
         bool RemoveStaff(int staffId);
-        ICollection<Staff> SearchStaff(string firstName, string lastName, string middleName, DateTime? birthday);
+        ISingleResult<SearchStaffResult> SearchStaff(string firstName, string lastName, string middleName, DateTime? birthday, int? departmentId);
         bool LinkStaffToDepartments(int staffId, int[] departmentIds);
         #endregion
     }
