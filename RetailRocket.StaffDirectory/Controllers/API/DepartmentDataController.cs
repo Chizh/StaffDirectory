@@ -13,27 +13,6 @@ namespace RetailRocket.StaffDirectory.Controllers.API
     /// </summary>
     public class DepartmentDataController : ApiDataControllerBase<Department>
     {
-        #region Helper methods
-        protected DepartmentResponse GetExceptionResponse(Exception ex)
-        {
-            return new DepartmentResponse
-            {
-                StatusCode = 3,
-                Message = ex.Message
-            };
-        }
-
-        protected DepartmentResponse GetGenericResponse(int statusCode, int id, string message)
-        {
-            return new DepartmentResponse
-            {
-                StatusCode = statusCode,
-                ID = id,
-                Message = message
-            };
-        }
-        #endregion
-
         /// <summary>
         /// Returns list of all of departments without any sorting, paging or conditions.
         /// </summary>
@@ -62,7 +41,7 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         /// <param name="departmentName">The name of department.</param>
         /// <returns>Response which contains status code, ID if department have been created, or error message.</returns>
         [HttpPost]
-        public DepartmentResponse CreateDepartment(string departmentName)
+        public ApiResponse CreateDepartment(string departmentName)
         {
             try
             {
@@ -88,7 +67,7 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         /// <param name="department">The department which should update.</param>
         /// <returns>Response which contains status code, ID of department, and error message if updating failed.</returns>
         [HttpPost]
-        public DepartmentResponse UpdateDepartment(Department department)
+        public ApiResponse UpdateDepartment(Department department)
         {
             try
             {
@@ -113,7 +92,7 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         /// <param name="departmentId">A department id which should be removed.</param>
         /// <returns>Response which contains a status code, ID of department, and error message if removing failed.</returns>
         [HttpPost]
-        public DepartmentResponse RemoveDepartment(int departmentId)
+        public ApiResponse RemoveDepartment(int departmentId)
         {
             try
             {

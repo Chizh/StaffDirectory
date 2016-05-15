@@ -12,27 +12,6 @@ namespace RetailRocket.StaffDirectory.Controllers.API
     /// </summary>
     public class StaffDataController : ApiDataControllerBase<Staff>
     {
-        #region Helper methods
-        protected StaffResponse GetExceptionResponse(Exception ex)
-        {
-            return new StaffResponse
-            {
-                StatusCode = 3,
-                Message = ex.Message
-            };
-        }
-
-        protected StaffResponse GetGenericResponse(int statusCode, int id, string message)
-        {
-            return new StaffResponse
-            {
-                StatusCode = statusCode,
-                ID = id,
-                Message = message
-            };
-        }
-        #endregion
-
         /// <summary>
         /// Gets collection of Staff without any conditions.
         /// </summary>
@@ -66,7 +45,7 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         /// <param name="instance">The staff instance.</param>
         /// <returns>Response which contains a status code, ID if staff have been created or error message.</returns>
         [HttpPost]
-        public StaffResponse CreateStaff(Staff instance)
+        public ApiResponse CreateStaff(Staff instance)
         {
             try
             {
@@ -99,7 +78,7 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         /// <param name="staff">Staff instance to update.</param>
         /// <returns>Response which contains a status code, ID of staff, and error message if updating failed.</returns>
         [HttpPost]
-        public StaffResponse UpdateStaff(Staff staff)
+        public ApiResponse UpdateStaff(Staff staff)
         {
             try
             {
@@ -127,7 +106,7 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         /// <param name="request">Instance of object which contains staffId and departmentIds.</param>
         /// <returns>Response which contains a status code, ID of staff, and error message if updating failed.</returns></returns>
         [HttpPost]
-        public StaffResponse LinkStaffToDepartments(StaffLinkRequest request)
+        public ApiResponse LinkStaffToDepartments(StaffLinkRequest request)
         {
             try
             {
@@ -148,7 +127,7 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         /// <param name="staffId">A staff id which should be removed.</param>
         /// <returns>Response which contains a status code, ID of the staff, and error message if removing failed.</returns>
         [HttpPost]
-        public StaffResponse RemoveStaff(int staffId)
+        public ApiResponse RemoveStaff(int staffId)
         {
             try
             {

@@ -156,8 +156,6 @@
     <Compile Include="Entity\SearchStaff.cs" />
     <Compile Include="Entity\Staff.cs" />
     <Compile Include="Entity\StaffLinkRequest.cs" />
-    <Compile Include="Entity\StaffResponse.cs" />
-    <Compile Include="Entity\DepartmentResponse.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
