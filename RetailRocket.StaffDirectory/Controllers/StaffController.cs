@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Ninject;
-using RetailRocket.StaffDirectory.Data;
 
 namespace RetailRocket.StaffDirectory.Controllers
 {
-    public class HomeController : Controller
+    public class StaffController : Controller
     {
         //
-        // GET: /Home/
-
-        [Inject]
-        public IRepository Repository { get; set; }
+        // GET: /Staff/
 
         public ActionResult Index()
         {

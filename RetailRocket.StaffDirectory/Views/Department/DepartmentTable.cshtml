@@ -1,0 +1,18 @@
+﻿@model ICollection<RetailRocket.StaffDirectory.Data.Department>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Департамент</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var department in Model)
+        {
+            <tr>
+                <td>@department.ID</td>
+                <td>@department.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

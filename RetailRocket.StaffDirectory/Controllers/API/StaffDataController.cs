@@ -137,10 +137,13 @@ namespace RetailRocket.StaffDirectory.Controllers.API
         /// </summary>
         /// <param name="request">Request which contains fields.</param>
         /// <returns>The result of search.</returns>
+        [HttpPost]
         public ICollection<Staff> SearchStaff(SearchStaffRequest request)
         {
-            return Repository.SearchStaff(request.FirstName, request.LastName, request.MiddleName,
-                request.Birthday);
+            return request != null
+                ? Repository.SearchStaff(request.FirstName, request.LastName, request.MiddleName,
+                    request.Birthday)
+                : Repository.SearchStaff(null, null, null, null);
         } 
     }
 }

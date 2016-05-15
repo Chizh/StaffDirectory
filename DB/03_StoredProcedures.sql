@@ -9,9 +9,9 @@ BEGIN
 
 	SELECT *
 	FROM dbo.Staff
-	WHERE (@firstName IS NULL OR FirstNameBin like Upper(@firstName) + '%' collate Cyrillic_General_CI_AS) AND
-		(@lastName IS NULL OR LastNameBin like Upper(@lastName) + '%' collate Cyrillic_General_CI_AS) AND
-		(@middleName IS NULL OR MiddleNameBin like Upper(@middleName) + '%' collate Cyrillic_General_CI_AS) AND
+	WHERE (@firstName IS NULL OR @firstName = '' OR FirstNameBin like Upper(@firstName) + '%' collate Cyrillic_General_CI_AS) AND
+		(@lastName IS NULL OR @lastName = '' OR LastNameBin like Upper(@lastName) + '%' collate Cyrillic_General_CI_AS) AND
+		(@middleName IS NULL OR @middleName = '' OR MiddleNameBin like Upper(@middleName) + '%' collate Cyrillic_General_CI_AS) AND
 		(@birthday IS NULL OR @birthday = Birthday)
 	OPTION (maxdop 1);
 END
